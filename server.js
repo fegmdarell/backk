@@ -9,14 +9,14 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173', // cámbialo por el dominio real en producción
+  origin: 'http://localhost:5173', 'https://front-beige-six.vercel.app/registro',// cámbialo por el dominio real en producción
   credentials: true
 }));
 
 app.use(express.json());
 app.use('/api/empresa', empresaRoutes);
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('✅ Conectado a MongoDB Atlas');
     app.listen(process.env.PORT || 4000, () =>
