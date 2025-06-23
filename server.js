@@ -9,7 +9,10 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173', 'https://front-beige-six.vercel.app/registro',// cámbialo por el dominio real en producción
+  origin: [
+    'http://localhost:5173',
+    'https://front-ootig5pgj-franks-projects-e016718d.vercel.app'
+  ],
   credentials: true
 }));
 
