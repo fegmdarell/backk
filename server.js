@@ -11,7 +11,8 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://front-ootig5pgj-franks-projects-e016718d.vercel.app'
+    'https://front-ootig5pgj-franks-projects-e016718d.vercel.app',
+    'https://front-beige-six.vercel.app'
   ],
   credentials: true
 }));
