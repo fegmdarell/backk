@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import empresaRoutes from './routes/empresa.js';
 import paypalRoutes from './routes/paypal.js';
+import wompiRoutes from './routes/wompi.js';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(cors({
 app.use(express.json());
 app.use('/api/empresa', empresaRoutes);
 app.use('/api/pago', paypalRoutes);
+app.use('/api/wompi', wompiRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
