@@ -6,21 +6,20 @@ const router = express.Router()
 // 📝 Registro de empresa
 router.post('/registrar', async (req, res) => {
   try {
-    const { nombre, correo, password, descripcion, sector, ubicacion, telefono, logo, ciudad, tamano, intereses } = req.body
+    // Usa el spread para tomar todos los campos del body
+    const datos = req.body;
 
-    if (!nombre || !correo || !password) {
-      return res.status(400).json({ message: 'Todos los campos son obligatorios' })
+    if (!datos.nombre || !datos.correo || !datos.password) {
+      return res.status(400).json({ message: 'Todos los campos son obligatorios' });
     }
 
-    const existe = await Empresa.findOne({ correo })
+    const existe = await Empresa.findOne({ correo: datos.correo });
     if (existe) {
-      return res.status(409).json({ message: 'El correo ya está registrado' })
+      return res.status(409).json({ message: 'El correo ya está registrado' });
     }
 
-    const nuevaEmpresa = new Empresa({
-      nombre, correo, password, descripcion, sector, ubicacion, telefono, logo, ciudad, tamano, intereses
-    })
-    await nuevaEmpresa.save()
+    const nuevaEmpresa = new Empresa(datos);
+    await nuevaEmpresa.save();
 
     res.status(201).json({
       message: '✅ Empresa registrada correctamente',
@@ -29,10 +28,10 @@ router.post('/registrar', async (req, res) => {
         nombre: nuevaEmpresa.nombre,
         correo: nuevaEmpresa.correo
       }
-    })
+    });
   } catch (error) {
-    console.error('❌ Error en registro:', error)
-    res.status(500).json({ message: 'Error interno del servidor' })
+    console.error('❌ Error en registro:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
   }
 })
 
