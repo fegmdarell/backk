@@ -6,7 +6,7 @@ const router = express.Router()
 // 📝 Registro de empresa
 router.post('/registrar', async (req, res) => {
   try {
-    const { nombre, correo, password } = req.body
+    const { nombre, correo, password, descripcion, sector, ubicacion, telefono, logo, ciudad, tamano, intereses } = req.body
 
     if (!nombre || !correo || !password) {
       return res.status(400).json({ message: 'Todos los campos son obligatorios' })
@@ -17,7 +17,9 @@ router.post('/registrar', async (req, res) => {
       return res.status(409).json({ message: 'El correo ya está registrado' })
     }
 
-    const nuevaEmpresa = new Empresa({ nombre, correo, password })
+    const nuevaEmpresa = new Empresa({
+      nombre, correo, password, descripcion, sector, ubicacion, telefono, logo, ciudad, tamano, intereses
+    })
     await nuevaEmpresa.save()
 
     res.status(201).json({
