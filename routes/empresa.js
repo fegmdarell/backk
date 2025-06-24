@@ -6,6 +6,7 @@ const router = express.Router()
 // 📝 Registro de empresa
 router.post('/registrar', async (req, res) => {
   try {
+    console.log('Datos recibidos en registro:', req.body); // 
     // Usa el spread para tomar todos los campos del body
     const datos = req.body;
 
