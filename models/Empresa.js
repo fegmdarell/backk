@@ -15,7 +15,8 @@ const EmpresaSchema = new mongoose.Schema({
   contacto: { type: String, default: '' },
   descripcion: { type: String, default: '' },
   ubicacion: { type: String, default: '' },
-  logo: { type: String, default: '' }
+  logo: { type: String, default: '' },
+  plan: { type: String, default: 'Básico' }
 }, {
   timestamps: true
 });
