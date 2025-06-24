@@ -6,6 +6,7 @@ import empresaRoutes from './routes/empresa.js';
 import paypalRoutes from './routes/paypal.js';
 import wompiRoutes from './routes/wompi.js';
 
+
 dotenv.config();
 
 const app = express();

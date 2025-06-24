@@ -13,7 +13,7 @@ router.post('/confirmar', async (req, res) => {
   }
 
   try {
-    // Consulta la transacción en la API de Wompi
+    // Consulta la transacción en la API de Wompi (sandbox)
     const response = await axios.get(`https://sandbox.wompi.co/v1/transactions/${transactionId}`);
     const data = response.data.data;
 
